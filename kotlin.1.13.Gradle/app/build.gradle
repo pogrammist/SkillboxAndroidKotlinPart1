@@ -17,7 +17,7 @@ android {
     }
     buildTypes {
         debug {
-            applicationIdSuffix ".debig"
+            applicationIdSuffix ".debug"
             //Edit app name only for look how use placeholder
             manifestPlaceholders = [app_name: "DebugGradle"]
         }
@@ -36,29 +36,17 @@ android {
         }
     }
 
-    flavorDimensions "type", "brand"
+    flavorDimensions "phone"
 
     productFlavors {
         demo {
-            dimension "type"
+            dimension "phone"
             applicationIdSuffix ".demo"
         }
 
         full  {
-            dimension "type"
+            dimension "phone"
             applicationIdSuffix ".full"
-        }
-
-        cola {
-            dimension "brand"
-            applicationIdSuffix ".cola"
-            minSdkVersion 26
-        }
-
-        papsi {
-            dimension "brand"
-            applicationIdSuffix ".papsi"
-            versionCode = android.defaultConfig.versionCode + 100
         }
     }
 }

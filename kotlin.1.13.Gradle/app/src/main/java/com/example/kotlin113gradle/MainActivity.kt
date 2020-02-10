@@ -12,10 +12,11 @@ class MainActivity : AppCompatActivity() {
 
         val textView = findViewById<TextView>(R.id.textView)
         textView.text = """
-            BuildType=${BuildConfig.BUILD_TYPE}
             Flavor=${BuildConfig.FLAVOR}
+            BuildType=${BuildConfig.BUILD_TYPE}
             VersionCode=${BuildConfig.VERSION_CODE}
             VersionName=${BuildConfig.VERSION_NAME}
+            ApplicationID=${BuildConfig.APPLICATION_ID}
         """.trimIndent()
     }
 }
