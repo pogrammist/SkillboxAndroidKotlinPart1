@@ -16,9 +16,49 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debig"
+            //Edit app name only for look how use placeholder
+            manifestPlaceholders = [app_name: "DebugGradle"]
+        }
+
+        qa {
+            initWith debug
+            applicationIdSuffix ".test"
+            manifestPlaceholders = [app_name: "QAGradle"]
+        }
+
         release {
+            signingConfig signingConfigs.debug
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [app_name: "ReleaseGradle"]
+        }
+    }
+
+    flavorDimensions "type", "brand"
+
+    productFlavors {
+        demo {
+            dimension "type"
+            applicationIdSuffix ".demo"
+        }
+
+        full  {
+            dimension "type"
+            applicationIdSuffix ".full"
+        }
+
+        cola {
+            dimension "brand"
+            applicationIdSuffix ".cola"
+            minSdkVersion 26
+        }
+
+        papsi {
+            dimension "brand"
+            applicationIdSuffix ".papsi"
+            versionCode = android.defaultConfig.versionCode + 100
         }
     }
 }
