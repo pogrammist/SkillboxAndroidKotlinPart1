@@ -4,17 +4,18 @@ fun main() {
 
     while (true) {
         println("Введите число чисел: ")
-        val items = readLine()?.toIntOrNull() ?: continue
-        val list = makeIntList(items)
+        val listLength = readLine()?.toIntOrNull() ?: continue
+        val list = makeIntList(listLength)
         println("Вы ввели список чисел: $list")
         println("Количество натуральных чисел в массиве: ${countOfNaturalNumbers(list)}")
         println("Количество четных чисел в массиве: ${countOfEvenNumbers(list)}")
         println("Четные числа в массиве: ${evenNumbers(list)}")
         println("Количество уникальных чисел в массиве: ${uniqueNumbers(list).count()}")
-        println("Сумма чисел в массиве: ${list.sum()}")
-        list.map {
+        val sumNumbers = list.sum()
+        println("Сумма чисел в массиве: $sumNumbers")
+        list.forEach {
             println(
-                "Число $it, сумма ${list.sum()}, НОД ${greatestCommonFactor(
+                "Число $it, сумма $sumNumbers, НОД ${greatestCommonFactor(
                     it,
                     uniqueNumbers(list).sum()
                 )}"
@@ -25,48 +26,27 @@ fun main() {
 
 fun makeIntList(items: Int): List<Int> {
     val list: MutableList<Int> = mutableListOf()
-    var items = items
-    var count = list.count()
-    while (items > 0) {
-        println("Введите ${++count} число:")
+    for (item in 1..items) {
+        println("Введите $item число:")
         val number = readLine()?.toIntOrNull() ?: continue
         list.add(number)
-        items--
     }
     return list
 }
 
-fun countOfNaturalNumbers(list: List<Int>): Int {
-    var count = 0
-    for (item in list) {
-        if (item > 0) {
-            count++
-        }
-    }
-    return count
-}
+fun countOfNaturalNumbers(list: List<Int>) = list.filter { it > 0 }.size
 
-fun countOfEvenNumbers(list: List<Int>): Int {
-    var count = 0
-    list.filter { it % 2 == 0 }.map { count++ }
-    return count
-}
+fun countOfEvenNumbers(list: List<Int>) = list.filter { it % 2 == 0 }.size
 
-
-fun evenNumbers(list: List<Int>): List<Int> {
-    val evenNumbers = mutableListOf<Int>()
-    list.filter { it % 2 == 0 }.map { evenNumbers.add(it) }
-    return evenNumbers
-}
+fun evenNumbers(list: List<Int>): List<Int> = list.filter { it % 2 == 0 }.map { it }
 
 fun uniqueNumbers(list: List<Int>): MutableSet<Int> {
     val set: MutableSet<Int> = mutableSetOf()
-    list.map { set += it }
+    list.forEach { set += it }
     return set
 }
 
 tailrec fun greatestCommonFactor(a: Int, b: Int): Int {
-    val a = a
     if (b == 0) {
         return a
     }
