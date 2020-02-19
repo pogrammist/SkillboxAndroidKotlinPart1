@@ -1,4 +1,4 @@
-package com.example.kotlin29kotlin
+package com.example.kotlin39kotlin
 
 fun main() {
 
@@ -7,10 +7,16 @@ fun main() {
         val listLength = readLine()?.toIntOrNull() ?: continue
         val list = makeIntList(listLength)
         println("Вы ввели список чисел: $list")
-        println("Количество натуральных чисел в массиве: ${countOfNaturalNumbers(list)}")
-        println("Количество четных чисел в массиве: ${countOfEvenNumbers(list)}")
+        println("Количество натуральных чисел в массиве: ${countOfNaturalNumbers(
+            list
+        )}")
+        println("Количество четных чисел в массиве: ${countOfEvenNumbers(
+            list
+        )}")
         println("Четные числа в массиве: ${evenNumbers(list)}")
-        println("Количество уникальных чисел в массиве: ${uniqueNumbers(list).count()}")
+        println("Количество уникальных чисел в массиве: ${uniqueNumbers(
+            list
+        ).count()}")
         val sumNumbers = list.sum()
         println("Сумма чисел в массиве: $sumNumbers")
         list.forEach {
