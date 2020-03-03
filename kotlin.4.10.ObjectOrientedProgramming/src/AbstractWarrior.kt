@@ -24,6 +24,7 @@ abstract class AbstractWarrior(
     }
 
     override fun takeDamage(damage: Int) {
+//        println("Боец понес урон: $damage")
         currentHealth = if (currentHealth - damage < 0) 0 else currentHealth - damage
         isKilled = currentHealth == 0
     }

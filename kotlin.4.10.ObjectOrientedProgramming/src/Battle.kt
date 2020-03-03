@@ -8,17 +8,12 @@ class Battle(private val countOfWarrior: Int) {
     private var battleFinished: Boolean = false
     private var turnFirst: Int = Random.nextInt(2)
 
-    init {
+    fun startBattle() {
         if (turnFirst == 1) {
             arrayTeams.reverse()
         }
         println("Начало битвы")
         while (!battleFinished) {
-//            val firstTeamAliveWarriors = arrayTeams[0].getWarriorList()
-//                .filter { !it.isKilled }.count()
-//            val secondTeamAliveWarriors = arrayTeams[1].getWarriorList()
-//                .filter { !it.isKilled }.count()
-
             when (val battleState = getState()) {
                 is CurrentState -> {
                     shuffled()
@@ -61,15 +56,14 @@ class Battle(private val countOfWarrior: Int) {
         arrayTeams.forEach { it.shuffleWarriorList() }
         arrayTeams.forEach { team ->
             team.getWarriorList().forEach { warrior ->
-                val targetWarrior: Warrior = if (team == arrayTeams[0]) {
-                    arrayTeams[1].getWarriorList()[Random.nextInt(countOfWarrior)]
-//                        .filter { !warrior.isKilled }
-
-                } else {
-                    arrayTeams[0].getWarriorList()[Random.nextInt(countOfWarrior)]
-//                        .filter { !warrior.isKilled }
+                if (!warrior.isKilled) {
+                    val targetWarrior: Warrior = if (team == arrayTeams[0]) {
+                        arrayTeams[1].getWarriorList().filter { !warrior.isKilled }.random()
+                    } else {
+                        arrayTeams[0].getWarriorList().filter { !warrior.isKilled }.random()
+                    }
+                    warrior.attack(targetWarrior)
                 }
-                warrior.attack(targetWarrior)
             }
         }
     }

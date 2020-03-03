@@ -6,11 +6,11 @@ abstract class AbstractWeapon(
 ) {
     private var ammoList: MutableList<Ammo> = mutableListOf()
     private var shells: MutableList<Ammo> = mutableListOf()
-    private var ammoIsEmpty: Boolean
+    private val ammoIsEmpty: Boolean
+        get() = ammoList.isEmpty()
 
     init {
 //        println("Инициализировано оружие ${this.fireType}, магазин пуст")
-        ammoIsEmpty = ammoList.isEmpty()
     }
 
     abstract fun makeShell(): Ammo
@@ -18,14 +18,10 @@ abstract class AbstractWeapon(
         for (shell in 1..maxAmmo) {
             ammoList.add(makeShell())
         }
-        ammoIsEmpty = false
 //        println("Заряжен ${ammoList.size} заряд")
     }
 
     fun getShell(): List<Ammo> {
-        if (ammoList.isEmpty()) {
-            ammoIsEmpty = true
-        }
         var count = fireType.repeat
         while (!ammoIsEmpty && count > 0) {
             shells.add(ammoList.last())
