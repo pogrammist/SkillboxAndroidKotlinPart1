@@ -1,14 +1,15 @@
 fun main() {
-    val queue = Queue<Any?>()
+    val first = Queue<Any?>()
 
-    queue.enqueue(1)
-    queue.enqueue("second")
-    queue.enqueue('3')
-    queue.enqueue(null)
-    queue.enqueue(5)
+    first.enqueue(1)
+    first.enqueue("second")
+    first.enqueue('3')
+    first.enqueue(null)
+    first.enqueue(5)
 
-    println(queue.filter { it is Int })
+    val second = first.filter { it is Int }
+    val three = second::filter{ it is Int }
 
-    println(queue.dequeue())
-    println(queue.dequeue())
+    println(three.dequeue())
+    println(three.dequeue())
 }

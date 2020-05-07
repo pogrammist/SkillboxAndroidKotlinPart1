@@ -1,5 +1,3 @@
-import java.util.function.BiPredicate
-
 class Queue<T> {
     private var queue: MutableList<T> = mutableListOf()
 
@@ -16,7 +14,9 @@ class Queue<T> {
         return first
     }
 
-    fun filter(predicate: (T) -> Boolean) {
-        queue = queue.filter { predicate(it) } as MutableList<T>
+    fun filter(predicate: (T) -> Boolean): Queue<T> {
+        val newQueue = Queue<T>()
+        queue.filter { predicate(it) }.forEach{ newQueue.enqueue(it)}
+        return newQueue
     }
 }
