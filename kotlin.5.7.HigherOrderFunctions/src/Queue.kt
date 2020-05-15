@@ -16,7 +16,9 @@ class Queue<T> {
 
     fun filter(predicate: (T) -> Boolean): Queue<T> {
         val newQueue = Queue<T>()
-        queue.filter { predicate(it) }.forEach{ newQueue.enqueue(it)}
+        queue.filter { predicate(it) }.forEach { newQueue.enqueue(it) }
+//        second variant
+//        newQueue.queue = queue.filter { predicate(it) } as MutableList<T>
         return newQueue
     }
 }
