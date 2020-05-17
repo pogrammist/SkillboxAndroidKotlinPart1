@@ -18,7 +18,7 @@ abstract class AbstractWeapon(
         for (shell in 1..maxAmmo) {
             ammoList.add(makeShell())
         }
-//        println("Заряжен ${ammoList.size} заряд")
+        println("Заряжен ${ammoList.size} заряд")
     }
 
     fun getShell(): List<Ammo> {
