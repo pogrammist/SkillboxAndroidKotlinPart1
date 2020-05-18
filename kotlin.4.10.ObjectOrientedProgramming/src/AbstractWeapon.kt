@@ -14,16 +14,32 @@ abstract class AbstractWeapon(
     }
 
     abstract fun makeShell(): Ammo
+
     fun reload() {
         for (shell in 1..maxAmmo) {
             ammoList.add(makeShell())
         }
-        println("Заряжен ${ammoList.size} заряд")
+        println("Заряжен ${ammoList.size} заряд ${fireType.ammo}")
     }
+
+//    fun getShell(): List<Ammo> {
+//        if (ammoIsEmpty) {
+//            reload()
+//        } else {
+//            var count = fireType.repeat
+//            while (!ammoIsEmpty && count > 0) {
+//                shells.add(ammoList.last())
+//                ammoList.removeAt(ammoList.lastIndex)
+//                count--
+//            }
+//        }
+//        return shells
+//    }
 
     fun getShell(): List<Ammo> {
         var count = fireType.repeat
-        while (!ammoIsEmpty && count > 0) {
+        while (count > 0) {
+            if (ammoIsEmpty) throw NoAmmoException("Боекомплект пуст")
             shells.add(ammoList.last())
             ammoList.removeAt(ammoList.lastIndex)
             count--
