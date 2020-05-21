@@ -1,10 +1,12 @@
 package com.example.kotlin410objectorientedprogramming
 
 class Gunner(
-    override var isKilled: Boolean,
-    maxHealth: Int,
+    health: Int,
     chanceOfDodging: Int,
     accuracy: Int,
     weapon: AbstractWeapon
-) : AbstractWarrior(maxHealth, chanceOfDodging, accuracy, weapon) {
+) : AbstractWarrior(health, chanceOfDodging, accuracy, weapon) {
+    override fun toString(): String {
+        return "Gunner[${super.toString()}]"
+    }
 }

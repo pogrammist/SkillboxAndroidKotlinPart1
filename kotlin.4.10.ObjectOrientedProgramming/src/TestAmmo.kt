@@ -25,4 +25,11 @@ fun main() {
         println(it.name)
         println(it.ordinal)
     }
+
+    var team = Team(5)
+    println(team.getWarriorList()[1].takeDamage(10000))
+    println(team.getWarriorList()[2].takeDamage(10000))
+    println(team.getWarriorList()[4].takeDamage(10000))
+
+    println(team.getWarriorList().lastOrNull { !it.isKilled }?.getCurrentHealth())
 }

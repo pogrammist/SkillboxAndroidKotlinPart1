@@ -1,5 +1,3 @@
 package com.example.kotlin410objectorientedprogramming
 
-class NoAmmoException : Exception() {
-    
-}
+class NoAmmoException(message: String) : Exception(message)
