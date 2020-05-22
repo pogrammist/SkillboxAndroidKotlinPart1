@@ -7,10 +7,8 @@ import android.text.Editable
 import android.text.Layout
 import android.text.TextWatcher
 import android.view.Gravity
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintSet
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -73,11 +71,11 @@ class MainActivity : AppCompatActivity() {
         checkBox.isEnabled = false
         loginButton.isEnabled = false
         val progressBar = ProgressBar(this).apply {
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+            layoutParams = RelativeLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
             ).apply {
-                gravity = Gravity.CENTER
+                addRule(RelativeLayout.CENTER_IN_PARENT)
             }
         }
         container.addView(progressBar)
