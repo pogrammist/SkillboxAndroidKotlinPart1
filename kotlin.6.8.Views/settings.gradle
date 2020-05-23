@@ -1,0 +1,2 @@
+rootProject.name='kotlin.6.8.Views'
+include ':app'
