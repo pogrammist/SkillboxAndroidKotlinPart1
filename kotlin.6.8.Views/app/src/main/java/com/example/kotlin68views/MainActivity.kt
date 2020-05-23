@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
-import android.text.Layout
 import android.text.TextWatcher
-import android.view.Gravity
+import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintSet
 import com.bumptech.glide.Glide
@@ -71,14 +70,18 @@ class MainActivity : AppCompatActivity() {
         checkBox.isEnabled = false
         loginButton.isEnabled = false
         val progressBar = ProgressBar(this).apply {
-            layoutParams = RelativeLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-            ).apply {
-                addRule(RelativeLayout.CENTER_IN_PARENT)
-            }
+            id = View.generateViewId()
         }
         container.addView(progressBar)
+        val set = ConstraintSet().apply {
+            constrainHeight(progressBar.id, ConstraintSet.WRAP_CONTENT)
+            constrainWidth(progressBar.id, ConstraintSet.WRAP_CONTENT)
+            connect(progressBar.id,ConstraintSet.LEFT,ConstraintSet.PARENT_ID,ConstraintSet.LEFT)
+            connect(progressBar.id,ConstraintSet.RIGHT,ConstraintSet.PARENT_ID,ConstraintSet.RIGHT)
+            connect(progressBar.id,ConstraintSet.TOP,ConstraintSet.PARENT_ID,ConstraintSet.TOP)
+            connect(progressBar.id,ConstraintSet.BOTTOM,ConstraintSet.PARENT_ID,ConstraintSet.BOTTOM)
+            applyTo(container)
+        }
         Handler().postDelayed({
             emailEditText.text.clear()
             emailEditText.isEnabled = true
