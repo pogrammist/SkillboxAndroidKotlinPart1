@@ -6,7 +6,7 @@ import com.example.kotlin410objectorientedprogramming.FireType.*
 object Weapons {
     val machineGun = object :
         AbstractWeapon(
-            maxAmmo = 1000,
+            maxAmmo = 100,
             fireType = BurstsShooting(ammo = BULLET, repeat = 10)
         ) {
         override fun makeShell(): Ammo {
@@ -15,7 +15,7 @@ object Weapons {
     }
     val grenadeLauncher = object :
         AbstractWeapon(
-            maxAmmo = 10,
+            maxAmmo = 1,
             fireType = SingleShooting(ammo = GRENADE)
         ) {
         override fun makeShell(): Ammo {
@@ -42,7 +42,7 @@ object Weapons {
     }
     val catapult = object :
         AbstractWeapon(
-            maxAmmo = 9999,
+            maxAmmo = 9,
             fireType = BurstsShooting(ammo = CAT, repeat = 9)
         ) {
         override fun makeShell(): Ammo {
