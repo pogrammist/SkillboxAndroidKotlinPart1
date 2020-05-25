@@ -7,4 +7,7 @@
     <string name="action_5">Action 5</string>
     <string name="action_6">Action 6</string>
     <string name="action_search">Search</string>
+    <string name="search_expanded">search expanded</string>
+    <string name="search_collapse">search collapse</string>
+    <string name="run_long_string">Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run</string>
 </resources>

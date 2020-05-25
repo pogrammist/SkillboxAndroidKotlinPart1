@@ -68,13 +68,13 @@ class ToolbarActivity : AppCompatActivity() {
         val searchItem = toolbar.menu.findItem(R.id.action_search)
         searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                expandTextView.text = "search expanded"
+                expandTextView.text = getString(R.string.search_expanded)
                 toast("search expanded")
                 return true
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                expandTextView.text = "search collapse"
+                expandTextView.text = getString(R.string.search_collapse)
                 toast("search collapse")
                 return true
             }

@@ -61,7 +61,7 @@
                 android:id="@+id/longTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run "
+                android:text="@string/run_long_string"
                 android:textSize="50sp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
