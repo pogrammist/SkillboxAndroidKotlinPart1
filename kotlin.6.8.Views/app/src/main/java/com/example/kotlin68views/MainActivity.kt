@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,6 +18,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        val progressBar = ProgressBar(this).apply {
+//            id = View.generateViewId()
+//            layoutParams = ConstraintLayout.LayoutParams(
+//                ConstraintLayout.LayoutParams.WRAP_CONTENT,
+//                ConstraintLayout.LayoutParams.MATCH_PARENT
+//            ).apply {
+//                endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+//                startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+//            }
+//        }
+//        container.addView(progressBar)
+
+//        val progressBar = ProgressBar(this).apply {
+//            id = View.generateViewId()
+//        }
+//        container.addView(progressBar)
+//        ConstraintSet().apply {
+//            constrainHeight(progressBar.id, ConstraintSet.WRAP_CONTENT)
+//            constrainWidth(progressBar.id, ConstraintSet.WRAP_CONTENT)
+//            connect(progressBar.id,ConstraintSet.LEFT,ConstraintSet.PARENT_ID,ConstraintSet.LEFT)
+//            connect(progressBar.id,ConstraintSet.RIGHT,ConstraintSet.PARENT_ID,ConstraintSet.RIGHT)
+//            connect(progressBar.id,ConstraintSet.TOP,ConstraintSet.PARENT_ID,ConstraintSet.TOP)
+//            connect(progressBar.id,ConstraintSet.BOTTOM,ConstraintSet.PARENT_ID,ConstraintSet.BOTTOM)
+//            setMargin(progressBar.id, ConstraintSet.LEFT, 110)
+//            applyTo(container)
+//        }
 
         val imageLink =
             "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
@@ -69,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         passEditText.isEnabled = false
         checkBox.isEnabled = false
         loginButton.isEnabled = false
+
         val progressBar = ProgressBar(this).apply {
             id = View.generateViewId()
         }
@@ -82,6 +111,7 @@ class MainActivity : AppCompatActivity() {
             connect(progressBar.id,ConstraintSet.BOTTOM,ConstraintSet.PARENT_ID,ConstraintSet.BOTTOM)
             applyTo(container)
         }
+
         Handler().postDelayed({
             emailEditText.text.clear()
             emailEditText.isEnabled = true
