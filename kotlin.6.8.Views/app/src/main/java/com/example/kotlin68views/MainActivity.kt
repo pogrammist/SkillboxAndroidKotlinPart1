@@ -3,11 +3,12 @@ package com.example.kotlin68views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,9 +16,33 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private const val FORM_STATE = "Form state"
+    }
+
+    private val tag = "MainActivity"
+    private var state: FormState? = FormState(true, "")
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(FORM_STATE, state)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        state = savedInstanceState.getParcelable(FORM_STATE)
+        stateTextView.text = state?.message ?: ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Log.v(tag, "onCreate was called")
+        Log.d(tag, "onCreate was called")
+        Log.i(tag, "onCreate was called")
+        Log.w(tag, "onCreate was called")
+        Log.e(tag, "onCreate was called")
 
 //        val progressBar = ProgressBar(this).apply {
 //            id = View.generateViewId()
@@ -80,8 +105,70 @@ class MainActivity : AppCompatActivity() {
         }
 
         loginButton.setOnClickListener {
-            makeLongBar()
+            if (emailEditText.text.toString().substringAfter('@') != "gmail.com") {
+                emailEditText.error = "Email must be gmail.com"
+                stateTextView.text = getString(R.string.form_not_true)
+                state = FormState(false, getString(R.string.form_not_true))
+            }
+            if (passEditText.text.length < 10) {
+                passEditText.error = "Password must be 10 characters"
+                stateTextView.text = getString(R.string.form_not_true)
+                state = FormState(false, getString(R.string.form_not_true))
+            } else {
+                stateTextView.text = ""
+                state = FormState(true, "")
+                makeLongBar()
+            }
         }
+
+        imageView.setOnClickListener {
+            Thread.sleep(6000)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.v(tag, "onStart was called")
+        Log.d(tag, "onStart was called")
+        Log.i(tag, "onStart was called")
+        Log.w(tag, "onStart was called")
+        Log.e(tag, "onStart was called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.v(tag, "onResume was called")
+        Log.d(tag, "onResume was called")
+        Log.i(tag, "onResume was called")
+        Log.w(tag, "onResume was called")
+        Log.e(tag, "onResume was called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.v(tag, "onPause was called")
+        Log.d(tag, "onPause was called")
+        Log.i(tag, "onPause was called")
+        Log.w(tag, "onPause was called")
+        Log.e(tag, "onPause was called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.v(tag, "onStop was called")
+        Log.d(tag, "onStop was called")
+        Log.i(tag, "onStop was called")
+        Log.w(tag, "onStop was called")
+        Log.e(tag, "onStop was called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v(tag, "onDestroy was called")
+        Log.d(tag, "onDestroy was called")
+        Log.i(tag, "onDestroy was called")
+        Log.w(tag, "onDestroy was called")
+        Log.e(tag, "onDestroy was called")
     }
 
     private fun EditText.isEmailValid(): Boolean {
@@ -105,10 +192,20 @@ class MainActivity : AppCompatActivity() {
         val set = ConstraintSet().apply {
             constrainHeight(progressBar.id, ConstraintSet.WRAP_CONTENT)
             constrainWidth(progressBar.id, ConstraintSet.WRAP_CONTENT)
-            connect(progressBar.id,ConstraintSet.LEFT,ConstraintSet.PARENT_ID,ConstraintSet.LEFT)
-            connect(progressBar.id,ConstraintSet.RIGHT,ConstraintSet.PARENT_ID,ConstraintSet.RIGHT)
-            connect(progressBar.id,ConstraintSet.TOP,ConstraintSet.PARENT_ID,ConstraintSet.TOP)
-            connect(progressBar.id,ConstraintSet.BOTTOM,ConstraintSet.PARENT_ID,ConstraintSet.BOTTOM)
+            connect(progressBar.id, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT)
+            connect(
+                progressBar.id,
+                ConstraintSet.RIGHT,
+                ConstraintSet.PARENT_ID,
+                ConstraintSet.RIGHT
+            )
+            connect(progressBar.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
+            connect(
+                progressBar.id,
+                ConstraintSet.BOTTOM,
+                ConstraintSet.PARENT_ID,
+                ConstraintSet.BOTTOM
+            )
             applyTo(container)
         }
 
