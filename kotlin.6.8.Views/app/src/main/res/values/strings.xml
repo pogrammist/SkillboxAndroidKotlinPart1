@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">kotlin.6.8.Views</string>
+    <string name="form_not_true">Form not true</string>
 </resources>
