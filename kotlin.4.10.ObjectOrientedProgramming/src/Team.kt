@@ -19,47 +19,42 @@ class Team(private val countOfWarrior: Int) {
             when (Random.nextInt(100)) {
                 in 1..20 -> warriorList.add(
                     Shooter(
-                        maxHealth = 100,
+                        health = 100,
                         chanceOfDodging = 90,
                         accuracy = 90,
-                        weapon = arm,
-                        isKilled = false
+                        weapon = arm
                     )
                 )
                 in 21..40 -> warriorList.add(
                     Shooter(
-                        maxHealth = 100,
+                        health = 100,
                         chanceOfDodging = 50,
                         accuracy = 90,
-                        weapon = crossbow,
-                        isKilled = false
+                        weapon = crossbow
                     )
                 )
                 in 41..60 -> warriorList.add(
                     Gunner(
-                        maxHealth = 500,
+                        health = 500,
                         chanceOfDodging = 10,
                         accuracy = 20,
-                        weapon = catapult,
-                        isKilled = false
+                        weapon = catapult
                     )
                 )
                 in 61..80 -> warriorList.add(
                     Juggernaut(
-                        maxHealth = 1500,
+                        health = 1500,
                         chanceOfDodging = 30,
                         accuracy = 60,
-                        weapon = machineGun,
-                        isKilled = false
+                        weapon = machineGun
                     )
                 )
                 in 81..100 -> warriorList.add(
                     Juggernaut(
-                        maxHealth = 1500,
+                        health = 1500,
                         chanceOfDodging = 30,
                         accuracy = 30,
-                        weapon = grenadeLauncher,
-                        isKilled = false
+                        weapon = grenadeLauncher
                     )
                 )
             }

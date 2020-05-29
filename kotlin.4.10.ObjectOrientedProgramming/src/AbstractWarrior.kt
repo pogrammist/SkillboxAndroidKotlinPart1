@@ -1,35 +1,45 @@
 package com.example.kotlin410objectorientedprogramming
 
 abstract class AbstractWarrior(
-    maxHealth: Int,
+    var health: Int,
     override val chanceOfDodging: Int,
     val accuracy: Int,
     private val weapon: AbstractWeapon
 ) : Warrior {
-    private var currentHealth: Int
-    override var isKilled: Boolean = false
+    override val isKilled: Boolean
+        get() = health == 0
 
     init {
-        currentHealth = maxHealth
+        println("Рекрутирован $this")
+        weapon.reload()
     }
 
     override fun attack(warrior: Warrior) {
-        val lowAmmo = weapon.getShell().isEmpty()
-        if (lowAmmo) {
-            weapon.reload()
-        } else {
+        try {
             val damage = weapon.getShell().sumBy { it.getDamage() }
+            println("$this атакует $warrior")
             warrior.takeDamage(damage)
+        } catch (ex: NoAmmoException) {
+            println(ex.message)
+            println("Требуется перезарядка")
+            weapon.reload()
         }
     }
 
     override fun takeDamage(damage: Int) {
-//        println("Боец понес урон: $damage")
-        currentHealth = if (currentHealth - damage < 0) 0 else currentHealth - damage
-        isKilled = currentHealth == 0
+        health = if (health - damage < 0) 0 else health - damage
+        if (isKilled) {
+            println("$this понес урон $damage и погиб")
+        } else {
+            println("$this понес урон $damage")
+        }
     }
 
     override fun getCurrentHealth(): Int {
-        return currentHealth
+        return health
+    }
+
+    override fun toString(): String {
+        return health.toString()
     }
 }

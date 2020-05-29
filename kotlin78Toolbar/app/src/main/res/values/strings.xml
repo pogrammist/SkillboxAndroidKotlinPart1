@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">kotlin.7.8.Toolbar</string>
+    <string name="action_1">Action 1</string>
+    <string name="action_2">Action 2</string>
+    <string name="action_3">Action 3</string>
+    <string name="action_4">Action 4</string>
+    <string name="action_5">Action 5</string>
+    <string name="action_6">Action 6</string>
+    <string name="action_search">Search</string>
+    <string name="search_expanded">search expanded</string>
+    <string name="search_collapse">search collapse</string>
+    <string name="run_long_string">Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run Run</string>
+</resources>
