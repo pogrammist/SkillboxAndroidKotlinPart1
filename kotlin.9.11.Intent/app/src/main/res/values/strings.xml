@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">kotlin.9.11.Intent</string>
+    <string name="form_not_true">Form not true</string>
+    <string name="call">Call</string>
+</resources>
